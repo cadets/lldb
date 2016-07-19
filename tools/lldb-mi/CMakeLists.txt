@@ -89,6 +89,10 @@ if ( NOT CMAKE_SYSTEM_NAME MATCHES "Windows" )
   target_link_libraries(lldb-mi pthread)
 endif ()
 
+if ( CMAKE_SYSTEM_NAME MATCHES "FreeBSD" )
+  set(LLVM_LINK_COMPONENTS support)
+endif ()
+
 llvm_config(lldb-mi ${LLVM_LINK_COMPONENTS})
 
 set_target_properties(lldb-mi PROPERTIES VERSION ${LLDB_VERSION})
